@@ -97,7 +97,7 @@ kubectl describe pod liveness-exec
 ```
 
 At the bottom of the output, there are messages indicating that the liveness
-probes have failed, and the containers have been killed and recreated.
+probes have failed, and the failed containers have been killed and recreated.
 
 ```
   Type     Reason     Age                From               Message
@@ -117,7 +117,7 @@ Wait another 30 seconds, and verify that the container has been restarted:
 kubectl get pod liveness-exec
 ```
 
-The output shows that `RESTARTS` has been incremented:
+The output shows that `RESTARTS` has been incremented. Note that the `RESTARTS` counter increments as soon as a failed container comes back to the running state:
 
 ```
 NAME            READY     STATUS    RESTARTS   AGE
@@ -506,7 +506,7 @@ those existing Pods.
 
 When you (or the control plane, or some other component) create replacement
 Pods, and the feature gate `ProbeTerminationGracePeriod` is disabled, then the
-API server ignores the Pod-level `terminationGracePeriodSeconds` field, even if
+API server ignores the Probe-level `terminationGracePeriodSeconds` field, even if
 a Pod or pod template specifies it.
 {{< /note >}}
 

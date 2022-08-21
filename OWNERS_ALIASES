@@ -33,7 +33,6 @@ aliases:
     - savitharaghunathan
     - sftim
     - tengqm
-    - zacharysarah
   sig-docs-en-reviews: # PR reviews for English content
     - bradtopol
     - celestehorgan
@@ -48,7 +47,6 @@ aliases:
     - sftim
     - shannonxtreme
     - tengqm
-    - zacharysarah
   sig-docs-es-owners: # Admins for Spanish content
     - raelga
     - electrocucaracha
@@ -136,6 +134,7 @@ aliases:
     - ianychoi
     - jihoon-seo
     - seokho-son
+    - yoonian
     - ysyukr
   sig-docs-ko-reviews: # PR reviews for Korean content
     - ClaudiaJKang
@@ -157,32 +156,28 @@ aliases:
     - sftim
     - tengqm
   sig-docs-zh-owners: # Admins for Chinese content
-    # chenopis
     - chenrui333
-    # dchen1107
-    # haibinxie
-    # hanjiayao
     - howieyuen
-    # lichuqiang
     - mengjiao-liu
     - SataQiu
+    - Sea-n
     - tanjunchen
     - tengqm
     - xichengliudui
-    # zhangxiaoyu-zidif
   sig-docs-zh-reviews: # PR reviews for Chinese content
     - chenrui333
     - chenxuc
     - howieyuen
-    - idealhack
+    # idealhack
     - mengjiao-liu
-    - pigletfly
+    # pigletfly
     - SataQiu
+    - Sea-n
     - tanjunchen
     - tengqm
+    - windsonsea
     - xichengliudui
     - ydFu
-    # zhangxiaoyu-zidif
   sig-docs-pt-owners: # Admins for Portuguese content
     - edsoncelio
     - femrtnz
@@ -200,6 +195,7 @@ aliases:
     - devlware
     - jhonmike
     - rikatz
+    - stormqueen1990
     - yagonobre
   sig-docs-vi-owners: # Admins for Vietnamese content
     - huynguyennovem

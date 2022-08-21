@@ -25,7 +25,7 @@ For information on how to create a cluster with kubeadm once you have performed 
 -->
 <img src="/images/kubeadm-stacked-color.png" align="right" width="150px">本页面显示如何安装 `kubeadm` 工具箱。
 有关在执行此安装过程后如何使用 kubeadm 创建集群的信息，请参见
-[使用 kubeadm 创建集群](/zh-cn/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/) 页面。
+[使用 kubeadm 创建集群](/zh-cn/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)页面。
 
 ## {{% heading "prerequisites" %}}
 
@@ -40,11 +40,11 @@ For information on how to create a cluster with kubeadm once you have performed 
 -->
 * 一台兼容的 Linux 主机。Kubernetes 项目为基于 Debian 和 Red Hat 的 Linux
   发行版以及一些不提供包管理器的发行版提供通用的指令
-* 每台机器 2 GB 或更多的 RAM （如果少于这个数字将会影响你应用的运行内存）
+* 每台机器 2 GB 或更多的 RAM（如果少于这个数字将会影响你应用的运行内存）
 * 2 CPU 核或更多
-* 集群中的所有机器的网络彼此均能相互连接(公网和内网都可以)
+* 集群中的所有机器的网络彼此均能相互连接（公网和内网都可以）
 * 节点之中不可以有重复的主机名、MAC 地址或 product_uuid。请参见[这里](#verify-mac-address)了解更多详细信息。
-* 开启机器上的某些端口。请参见[这里](#check-required-ports) 了解更多详细信息。
+* 开启机器上的某些端口。请参见[这里](#check-required-ports)了解更多详细信息。
 * 禁用交换分区。为了保证 kubelet 正常工作，你 **必须** 禁用交换分区。
 
 <!-- steps -->
@@ -67,8 +67,7 @@ may [fail](https://github.com/kubernetes/kubeadm/issues/31).
 
 一般来讲，硬件设备会拥有唯一的地址，但是有些虚拟机的地址可能会重复。
 Kubernetes 使用这些值来唯一确定集群中的节点。
-如果这些值在每个节点上不唯一，可能会导致安装
-[失败](https://github.com/kubernetes/kubeadm/issues/31)。
+如果这些值在每个节点上不唯一，可能会导致安装[失败](https://github.com/kubernetes/kubeadm/issues/31)。
 
 <!--
 ## Check network adapters
@@ -78,7 +77,8 @@ route, we recommend you add IP route(s) so Kubernetes cluster addresses go via t
 -->
 ## 检查网络适配器
 
-如果你有一个以上的网络适配器，同时你的 Kubernetes 组件通过默认路由不可达，我们建议你预先添加 IP 路由规则，这样 Kubernetes 集群就可以通过对应的适配器完成连接。
+如果你有一个以上的网络适配器，同时你的 Kubernetes 组件通过默认路由不可达，我们建议你预先添加 IP 路由规则，
+这样 Kubernetes 集群就可以通过对应的适配器完成连接。
 
 <!--
 ## Letting iptables see bridged traffic
@@ -92,7 +92,7 @@ As a requirement for your Linux Node's iptables to correctly see bridged traffic
 确保 `br_netfilter` 模块被加载。这一操作可以通过运行 `lsmod | grep br_netfilter`
 来完成。若要显式加载该模块，可执行 `sudo modprobe br_netfilter`。
 
-为了让你的 Linux 节点上的 iptables 能够正确地查看桥接流量，你需要确保在你的
+为了让你的 Linux 节点上的 iptables 能够正确地查看桥接流量，你需要确保在
 `sysctl` 配置中将 `net.bridge.bridge-nf-call-iptables` 设置为 1。例如：
 
 ```bash
@@ -121,7 +121,8 @@ need to be open in order for Kubernetes components to communicate with each othe
 
 ## 检查所需端口{#check-required-ports}
 
-启用这些[必要的端口](/zh-cn/docs/reference/ports-and-protocols/)后才能使 Kubernetes 的各组件相互通信。可以使用 netcat 之类的工具来检查端口是否启用，例如：
+启用这些[必要的端口](/zh-cn/docs/reference/ports-and-protocols/)后才能使 Kubernetes 的各组件相互通信。
+可以使用 netcat 之类的工具来检查端口是否启用，例如：
 
 ```shell
 nc 127.0.0.1 6443
@@ -132,8 +133,8 @@ The pod network plugin you use may also require certain ports to be
 open. Since this differs with each pod network plugin, please see the
 documentation for the plugins about what port(s) those need.
 -->
-你使用的 Pod 网络插件 (详见后续章节) 也可能需要开启某些特定端口。由于各个 Pod 网络插件的功能都有所不同，
-请参阅他们各自文档中对端口的要求。
+你使用的 Pod 网络插件 (详见后续章节) 也可能需要开启某些特定端口。
+由于各个 Pod 网络插件的功能都有所不同，请参阅他们各自文档中对端口的要求。
 
 <!--
 ## Installing a container runtime {#installing-runtime}
@@ -180,9 +181,11 @@ For that reason, an additional service [cri-dockerd](https://github.com/Mirantis
 has to be installed. cri-dockerd is a project based on the legacy built-in
 Docker Engine support that was [removed](/dockershim) from the kubelet in version 1.24.
 -->
-Docker Engine 没有实现 [CRI](/zh-cn/docs/concepts/architecture/cri/)，而这是容器运行时在 Kubernetes 中工作所需要的。
+Docker Engine 没有实现 [CRI](/zh-cn/docs/concepts/architecture/cri/)，
+而这是容器运行时在 Kubernetes 中工作所需要的。
 为此，必须安装一个额外的服务 [cri-dockerd](https://github.com/Mirantis/cri-dockerd)。
-cri-dockerd 是一个基于传统的内置Docker引擎支持的项目，它在 1.24 版本从 kubelet 中[移除](/zh-cn/dockershim)。
+cri-dockerd 是一个基于传统的内置 Docker 引擎支持的项目，
+它在 1.24 版本从 kubelet 中[移除](/zh-cn/dockershim)。
 {{< /note >}}
 
 <!--
@@ -260,14 +263,14 @@ but not vice versa.
 
 For information about installing `kubectl`, see [Install and set up kubectl](/docs/tasks/tools/).
 -->
-kubeadm **不能** 帮你安装或者管理 `kubelet` 或 `kubectl`，所以你需要
-确保它们与通过 kubeadm 安装的控制平面的版本相匹配。
+kubeadm **不能**帮你安装或者管理 `kubelet` 或 `kubectl`，
+所以你需要确保它们与通过 kubeadm 安装的控制平面的版本相匹配。
 如果不这样做，则存在发生版本偏差的风险，可能会导致一些预料之外的错误和问题。
-然而，控制平面与 kubelet 间的相差一个次要版本不一致是支持的，但 kubelet
+然而，控制平面与 kubelet 之间可以存在**一个**次要版本的偏差，但 kubelet
 的版本不可以超过 API 服务器的版本。
 例如，1.7.0 版本的 kubelet 可以完全兼容 1.8.0 版本的 API 服务器，反之则不可以。
 
-有关安装 `kubectl` 的信息，请参阅[安装和设置 kubectl](/zh-cn/docs/tasks/tools/)文档。
+有关安装 `kubectl` 的信息，请参阅[安装和设置 kubectl](/zh-cn/docs/tasks/tools/) 文档。
 
 {{< warning >}}
 <!--
