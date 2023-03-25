@@ -94,4 +94,3 @@ kubectl get pods --all-namespaces -o go-template --template="{{range .items}}{{r
 
 * [Jsonpath](/docs/reference/kubectl/jsonpath/) reference guide
 * [Go template](https://golang.org/pkg/text/template/) reference guide
-
